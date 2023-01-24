@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width,initial-scale=1,minimum-scale=1" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <meta content="#fff" name="theme-color" id="theme-color">
+  <meta content="Hexo" name="description">
+  <link href="static/picture/Y67gdd.png" rel="icon">
+  <title>代码高亮</title>
+  <meta content="代码高亮" property="og:title">
+  <meta content="https://demo.theme-kaze.top/highlight/index.html" property="og:url">
+  <meta content="https://img.songhn.com/img/kaze-theme-demo-cate-code.webp?imageslim" property="og:img">
+  <meta content="代码高亮文档与演示" property="og:img">
+  <meta content="article" property="og:type">
+  <meta content="2020-08-03" property="og:article:published_time">
+  <meta content="2022-06-21" property="og:article:modified_time">
+  <meta content="theme-kaze" property="og:article:author">
+  <meta content="代码高亮" property="og:article:tag">
+  <link href="static/css/font_1946621_i1kgafibvw.css" rel="preload" as="style">
+  <link href="static/css/font_1952792_89b4ac4k4up.css" rel="preload" as="style">
+  <link href="static/css/main.css" rel="preload" as="style">
+  <link href="https://instant.page/5.1.0" rel="modulepreload">
+  <link href="static/css/main.css" rel="stylesheet">
+  <link href="static/css/font_1946621_i1kgafibvw.css" rel="stylesheet">
+  <link href="static/css/font_1952792_89b4ac4k4up.css" rel="stylesheet">
+  <link href="static/css/baguetteBox.min.css" rel="stylesheet">
+  <script>function loadScript (e, t) { var n = document.createElement("script"); n.src = e, t && (n.onload = t), n.async = !0, document.body.appendChild(n) } function loadCSS (e, t, n) { var a = document.createElement("link"); a.ref = "stylesheet", a.href = e, a.dataset[t] = n, document.head.appendChild(a) } function changeCSS (e, t, n) { var t = document.querySelector(t), a = document.createElement("link"); a.setAttribute("rel", "stylesheet"), a.setAttribute("href", e), a.dataset.prism = n, document.head.replaceChild(a, t) }</script>
+  <script>function prismThemeChange () { document.getElementById("theme-color").dataset.mode, document.querySelector("[data-prism]") ? changeCSS("/js/lib/prism/prism-tomorrow.min.css", "[data-prism]", "prism-tomorrow") : loadCSS("/js/lib/prism/prism-tomorrow.min.css", "prism", "prism-tomorrow") } prismThemeChange()</script>
+  <link href="static/css/prism-line-numbers.min.css" rel="stylesheet">
+  <script>var reverseDarkList = { dark: "light", light: "dark" }, themeColor = { dark: "#1c1c1e", light: "#fff" }, getCssMediaQuery = function () { return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" }, reverseDarkModeSetting = function () { var e = localStorage.getItem("user-color-scheme"); if (reverseDarkList[e]) e = reverseDarkList[e]; else { if (null !== e) return; e = reverseDarkList[getCssMediaQuery()] } return localStorage.setItem("user-color-scheme", e), e }</script>
+  <script>var setDarkmode = function (e) { e = e || localStorage.getItem("user-color-scheme"); e === getCssMediaQuery() ? (document.documentElement.removeAttribute("data-user-color-scheme"), localStorage.removeItem("user-color-scheme"), document.getElementById("theme-color").content = themeColor[e], document.getElementById("theme-color").dataset.mode = e) : reverseDarkList[e] ? (document.documentElement.setAttribute("data-user-color-scheme", e), document.getElementById("theme-color").content = themeColor[e], document.getElementById("theme-color").dataset.mode = e) : (document.documentElement.removeAttribute("data-user-color-scheme"), localStorage.removeItem("user-color-scheme"), document.getElementById("theme-color").content = themeColor[getCssMediaQuery()], document.getElementById("theme-color").dataset.mode = getCssMediaQuery()), prismThemeChange() }; setDarkmode()</script>
+  <link href="https://demo.theme-kaze.top/js/lib/lightbox/baguetteBox.min.js" rel="preload" as="script">
+  <link href="static/css/baguetteBox.min.css" rel="preload" as="style">
+  <link href="https://demo.theme-kaze.top/js/lib/lozad.min.js" rel="preload" as="script">
+  <link href="static/css/katex.min.css" rel="prefetch" as="script">
+  <link href="https://unpkg.com/valine/dist/Valine.min.js" rel="prefetch" as="script">
+  <meta content="Hexo 5.4.2" name="generator">
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar">
+      <div class="navbar-logo"><a href="index.html" class="navbar-logo-main"><img alt="blog logo"
+            class="navbar-logo-img" src="static/picture/Y67gdd.png" height="32" width="32"> <span
+            class="navbar-logo-dsc">theme-kaze demo</span></a></div>
+      <div class="navbar-menu"><a href="index.html" class="navbar-menu-item">首页 </a><a href="archives.html"
+          class="navbar-menu-item">归档 </a><a href="tags.html" class="navbar-menu-item">标签 </a><a href="categories.html"
+          class="navbar-menu-item">分类 </a><a href="about.html" class="navbar-menu-item">关于 </a><a href="links.html"
+          class="navbar-menu-item">友链 </a><button class="navbar-menu-item navbar-menu-btn darknavbar"
+          aria-label="Toggle dark mode" id="dark"><i class="iconfont icon-weather"></i></button> <button
+          class="navbar-menu-item navbar-menu-btn searchnavbar" aria-label="Toggle search" id="search">
+          <!-- <i 
+        class="iconfont icon-search" 
+        style="font-size: 1.2rem; font-weight: 400;">
+      </i> --> <svg aria-hidden="true" class="iconify iconify--ion" height="28" preserveaspectratio="xMidYMid meet"
+            role="img" viewbox="0 0 512 512" width="28" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path d="M256 80a176 176 0 1 0 176 176A176 176 0 0 0 256 80Z" fill="none" stroke="currentColor"
+              stroke-miterlimit="10" stroke-width="28"></path>
+            <path d="M232 160a72 72 0 1 0 72 72a72 72 0 0 0-72-72Z" fill="none" stroke="currentColor"
+              stroke-miterlimit="10" stroke-width="28"></path>
+            <path d="M283.64 283.64L336 336" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="28"
+              stroke-linecap="round"></path>
+          </svg>
+        </button></div>
+    </nav>
+    <div id="local-search" style="display:none"><input class="navbar-menu-item" id="search-input"
+        placeholder="请输入搜索内容...">
+      <div id="search-content"></div>
+    </div>
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <aside class="left-column">
+            <div class="card card-author"><img alt="author avatar" class="author-img" src="static/picture/Y67gdd.png"
+                height="88" width="88">
+              <p class="author-name">theme-kaze</p>
+              <p class="author-description">designed by theme-kaze</p>
+              <div class="author-message"><a href="archives.html" class="author-posts-count"><span>4</span>
+                  <span>文章</span> </a><a href="categories.html" class="author-categories-count"><span>2</span>
+                  <span>分类</span> </a><a href="tags.html" class="author-tags-count"><span>5</span> <span>标签</span></a>
+              </div>
+              <div class="author-card-society">
+                <div class="author-card-society-icon"><a href="javascript:;" rel="noopener" target="_blank"><i
+                      class="iconfont society-icon icon-github"></i></a></div>
+                <div class="author-card-society-icon"><a href="mailto:i@songhn.com"><i
+                      class="iconfont society-icon icon-mail"></i></a></div>
+                <div class="author-card-society-icon"><a href="javascript:;" rel="noopener" target="_blank"><i
+                      class="iconfont society-icon icon-chrome"></i></a></div>
+              </div>
+            </div>
+            <div class="sticky-tablet">
+              <article class="display-when-two-columns spacer">
+                <div class="card card-content toc-card">
+                  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right:2px"></i>目录</div>
+                  <ol class="toc">
+                    <li class="toc-item toc-level-2"><a href="#%E7%AE%80%E4%BB%8B" class="toc-link"><span
+                          class="toc-text">简介</span></a>
+                      <ol class="toc-child">
+                        <li class="toc-item toc-level-3"><a href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"
+                            class="toc-link"><span class="toc-text">高亮方案</span></a></li>
+                        <li class="toc-item toc-level-3"><a href="#%E4%BD%BF%E7%94%A8highlightjs" class="toc-link"><span
+                              class="toc-text">使用highlightjs</span></a></li>
+                      </ol>
+                    </li>
+                    <li class="toc-item toc-level-2"><a href="#%E4%BD%BF%E7%94%A8prismjs" class="toc-link"><span
+                          class="toc-text">使用prismjs</span></a></li>
+                    <li class="toc-item toc-level-2"><a href="#%E6%BC%94%E7%A4%BA" class="toc-link"><span
+                          class="toc-text">演示</span></a>
+                      <ol class="toc-child">
+                        <li class="toc-item toc-level-3"><a href="#javascript" class="toc-link"><span
+                              class="toc-text">Javascript</span></a></li>
+                        <li class="toc-item toc-level-3"><a href="#c" class="toc-link"><span
+                              class="toc-text">C++</span></a></li>
+                        <li class="toc-item toc-level-3"><a href="#php" class="toc-link"><span
+                              class="toc-text">PHP</span></a></li>
+                        <li class="toc-item toc-level-3"><a href="#json" class="toc-link"><span
+                              class="toc-text">JSON</span></a></li>
+                        <li class="toc-item toc-level-3"><a href="#python" class="toc-link"><span
+                              class="toc-text">Python</span></a></li>
+                        <li class="toc-item toc-level-3"><a href="#go" class="toc-link"><span
+                              class="toc-text">Go</span></a></li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+              </article>
+              <article class="card card-content categories-widget">
+                <div class="categories-card">
+                  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right:2px"></i>分类</div>
+                  <div class="categories-list"><a href="index1.html">
+                      <div class="categories-list-item">文档 <span class="categories-list-item-badge">3</span></div>
+                    </a><a href="index2.html">
+                      <div class="categories-list-item">演示 <span class="categories-list-item-badge">1</span></div>
+                    </a></div>
+                </div>
+              </article>
+              <article class="card card-content tags-widget">
+                <div class="tags-card">
+                  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right:2px"></i>热门标签</div>
+                  <div class="tags-list"><a href="index3.html" title="散文">
+                      <div class="tags-list-item">散文</div>
+                    </a><a href="index4.html" title="数学公式">
+                      <div class="tags-list-item">数学公式</div>
+                    </a><a href="index5.html" title="katex">
+                      <div class="tags-list-item">katex</div>
+                    </a><a href="index6.html" title="mathjax">
+                      <div class="tags-list-item">mathjax</div>
+                    </a><a href="index7.html" title="代码高亮">
+                      <div class="tags-list-item">代码高亮</div>
+                    </a></div>
+                </div>
+              </article>
+            </div>
+          </aside>
+          <main class="main-column">
+            <div class="image-wrapper"><img alt="代码高亮 thumbnail" class="image lozad"
+                src="static/picture/kaze-theme-demo-cate-code.webp"
+                data-src="https://img.songhn.com/img/kaze-theme-demo-cate-code.webp?imageslim"
+                srcset="https://img.songhn.com/img/kaze-theme-demo-cate-code.webp?imageMogr2/blur/1x0/quality/1"></div>
+            <article class="card card-content">
+              <header>
+                <h1 class="post-title">代码高亮</h1>
+              </header>
+              <div class="post-meta post-show-meta"><time datetime="2020-08-03T14:47:49.000Z"><i
+                    class="iconfont icon-calendar" style="margin-right:2px"></i> <span>2020-08-03</span> </time><span
+                  class="dot"></span> <a href="index1.html" class="post-meta-link">文档 </a><span class="dot"></span>
+                <span>751 字</span></div>
+              <div class="post-meta post-show-meta" style="margin-top:-10px">
+                <div style="display:flex;align-items:center"><i class="iconfont icon-biaoqian"
+                    style="margin-right:2px;font-size:1.15rem"></i> <a href="index7.html"
+                    class="post-meta-link">代码高亮</a></div>
+              </div>
+              <div class="post-content" id="section">
+                <h2 id="简介"><a href="#简介" class="markdownIt-Anchor"></a> 简介</h2>
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism.min.css" rel="preload" as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-coy.min.css" rel="preload" as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-dark.min.css" rel="preload" as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-funky.min.css" rel="preload" as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-okaidia.min.css" rel="preload" as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-solarizedlight.min.css" rel="preload"
+                  as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-tomorrow.min.css" rel="preload" as="style">
+                <link href="https://demo.theme-kaze.top/js/lib/prism/prism-twilight.min.css" rel="preload" as="style">
+                <h3 id="高亮方案"><a href="#高亮方案" class="markdownIt-Anchor"></a> 高亮方案</h3>
+                <p>本主题没有使用自定义高亮方式，高亮方案在Hexo本身支持的 <code>highlightjs</code> 和 <code>prismjs</code> 基础上修改得到</p>
+                <h3 id="使用highlightjs"><a href="#使用highlightjs" class="markdownIt-Anchor"></a> 使用highlightjs</h3>
+                <pre class="line-numbers language-yaml"
+                  data-language="yaml"><code class="language-yaml"><span class="token atrule key">highlight</span><span class="token punctuation">:</span>
+  <span class="token atrule key">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token atrule key">line_number</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token atrule key">auto_detect</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token atrule key">tab_replace</span><span class="token punctuation">:</span> <span class="token string">''</span>
+  <span class="token atrule key">wrap</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token atrule key">hljs</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token atrule key">prismjs</span><span class="token punctuation">:</span>
+  <span class="token atrule key">enable</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token punctuation">...</span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <div class="note-warning post-note">
+                  <p><code>highlight</code> 和 <code>prismjs</code> 的 <code>enable: true</code> 只能保留一个</p>
+                </div>
+                <p>在站点配置文件将 <code>highlight</code> 设置 <code>enable: true</code> 即可开启，<code>line_number</code>
+                  选项本主题暂不支持显示</p>
+                <p>若需要支持代码高亮可设置 <code>hljs: true</code>，该配色方案参考了 <code>tomorrow night</code> 等配色主题</p>
+                <p>其他具体参数设置可参考 <a href="javascript:;" rel="noopener" target="_blank">Hexo相关文档</a></p>
+                <h2 id="使用prismjs"><a href="#使用prismjs" class="markdownIt-Anchor"></a> 使用prismjs</h2>
+                <p>在 <code>prismjs</code> 中设置 <code>enable: true</code> 和 <code>preprocess: true</code> 即可开启 默认支持
+                  <code>Line Numbers</code> 和 <code>Show Languages</code> 两个插件 如果需要其他插件支持可以设置
+                  <code>preprocess: false</code></p>
+                <div class="note-warning post-note">
+                  <p>当前主题版本不支持 <code>preprocess: false</code> 自动引入相关文件 如有相关需求请自行引入相关 css 与 js 文件</p>
+                </div>
+                <p>设置 <code>line_number: true</code> 即可显示行号</p>
+                <h2 id="演示"><a href="#演示" class="markdownIt-Anchor"></a> 演示</h2>
+                <p>以下演示采用 <code>prism</code>，<code>highlight</code> 在主题效果可参见（TODO）</p>
+                <p>有八种高亮主题可选择</p>
+                <p><button class="postbutton" style="color:#fff">default</button> <button class="postbutton"
+                    style="color:#fff">coy</button> <button class="postbutton" style="color:#fff">dark</button> <button
+                    class="postbutton" style="color:#fff">funky</button> <button class="postbutton"
+                    style="color:#fff">okaidia</button> <button class="postbutton"
+                    style="color:#fff">solarizedlight</button> <button class="postbutton"
+                    style="color:#fff">tomorrow</button> <button class="postbutton" style="color:#fff">twilight</button>
+                </p>
+                <h3 id="javascript"><a href="#javascript" class="markdownIt-Anchor"></a> Javascript</h3>
+                <pre class="line-numbers language-javascript"
+                  data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token function function-variable">smoothScrollToTop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">let</span> yTopValve <span class="token operator">=</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>pageYOffset <span class="token operator">||</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>yTopValve <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>smoothScrollToTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>yTopValve <span class="token operator">*</span> <span class="token number">0.85</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'scrollbutton'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onclick <span class="token operator">=</span> smoothScrollToTop<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="c"><a href="#c" class="markdownIt-Anchor"></a> C++</h3>
+                <pre class="line-numbers language-cpp"
+                  data-language="cpp"><code class="language-cpp"><span class="token property macro"><span class="token directive-hash">#</span><span class="token keyword directive">include</span><span class="token string">&lt;cstdio></span></span>
+<span class="token property macro"><span class="token directive-hash">#</span><span class="token keyword directive">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token property macro"><span class="token directive-hash">#</span><span class="token keyword directive">include</span><span class="token string">&lt;algorithm></span></span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxn<span class="token operator">=</span><span class="token number">1050</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> maxm<span class="token operator">=</span><span class="token number">20000010</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> h<span class="token punctuation">,</span>n<span class="token punctuation">,</span>v<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">,</span>w<span class="token punctuation">[</span>maxn<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>maxm<span class="token punctuation">]</span><span class="token punctuation">,</span>maxx<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	cin<span class="token operator">>></span>h<span class="token operator">>></span>n<span class="token punctuation">;</span>
+	<span class="token function">memset</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span><span class="token number">0x3f</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> cin<span class="token operator">>></span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">>></span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>maxx<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>maxx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>h<span class="token operator">+</span>maxx<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
+			f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>j<span class="token operator">-</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">int</span> ans<span class="token operator">=</span>inf<span class="token punctuation">;</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>h<span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>h<span class="token operator">+</span>maxx<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> ans<span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	cout<span class="token operator">&lt;&lt;</span>ans<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="php"><a href="#php" class="markdownIt-Anchor"></a> PHP</h3>
+                <pre class="line-numbers language-php"
+                  data-language="php"><code class="language-php"><span class="token language-php php"><span class="token important delimiter">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">show_source</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$blacklist</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string single-quoted-string">' '</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\t'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\r'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\n'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\''</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'"'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'`'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\['</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'\]'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\$'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\\'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'\^'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$blacklist</span> <span class="token keyword">as</span> <span class="token variable">$blackitem</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/'</span> <span class="token operator">.</span> <span class="token variable">$blackitem</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'/m'</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"what are you want to do?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'echo '</span><span class="token operator">.</span><span class="token variable">$str</span><span class="token operator">.</span><span class="token string single-quoted-string">';'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token important delimiter">?></span></span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="json"><a href="#json" class="markdownIt-Anchor"></a> JSON</h3>
+                <pre class="line-numbers language-json"
+                  data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"hexo-theme-kaze"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"hexo-theme-kaze"</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"theme-kaze"</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span><span class="token punctuation">,</span>
+  <span class="token property">"bugs"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://github.com/theme-kaze/hexo-theme-Kaze/issues"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"homepage"</span><span class="token operator">:</span> <span class="token string">"https://github.com/theme-kaze/hexo-theme-Kaze#readme"</span>
+<span class="token punctuation">&#125;</span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="python"><a href="#python" class="markdownIt-Anchor"></a> Python</h3>
+                <pre class="line-numbers language-python"
+                  data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> sys
+<span class="token keyword">import</span> os
+url <span class="token operator">=</span> <span class="token string">'https://twoshot.hgame.n3ko.co/'</span>
+headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/x-www-form-urlencoded'</span><span class="token punctuation">,</span>
+    <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span>
+p <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'random.php?times=228'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">)</span>
+randnum <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'\d*'</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+firstnum <span class="token operator">=</span> randnum<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+lastnum <span class="token operator">=</span> randnum<span class="token punctuation">[</span><span class="token number">227</span><span class="token punctuation">]</span>
+content <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">"python3 ./reverse_mt_rand.py "</span> <span class="token operator">+</span>
+                   firstnum<span class="token operator">+</span><span class="token string">' '</span><span class="token operator">+</span>lastnum<span class="token operator">+</span><span class="token string">' 0 0'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+q <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'/verify.php'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'ans'</span><span class="token punctuation">:</span> content<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>q<span class="token punctuation">.</span>text<span class="token punctuation">)</span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h3 id="go"><a href="#go" class="markdownIt-Anchor"></a> Go</h3>
+                <pre class="line-numbers language-go"
+                  data-language="go"><code class="language-go"><span class="token comment">// backup my secret key into DB</span>
+<span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">Exec</span><span class="token punctuation">(</span>fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">`INSERT INTO secret(secret) VALUES('%s');`</span><span class="token punctuation">,</span> secretKey<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">if</span> u<span class="token punctuation">.</span>TotalBalance <span class="token operator">></span> <span class="token number">999999</span> <span class="token operator">||</span> win <span class="token punctuation">&#123;</span>
+    flag <span class="token operator">=</span> os<span class="token punctuation">.</span><span class="token function">Getenv</span><span class="token punctuation">(</span><span class="token string">"flag"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    flag <span class="token operator">=</span> <span class="token string">"nothing to show, to be a winner"</span>
+<span class="token punctuation">&#125;</span><span class="line-numbers-rows" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <script>function changePrismTheme (e) { let t = e.target.innerHTML; var a; for (a of document.head.getElementsByTagName("link")) a.dataset.prism && document.head.removeChild(a); let m = document.createElement("link"); m.rel = "stylesheet", t = "default" === (m.dataset.prism = t) ? "prism" : "prism-" + t, m.href = "/js/lib/prism/" + t + ".min.css", document.head.appendChild(m) } setTimeout(() => { var e = document.getElementsByClassName("postbutton"); Array.prototype.forEach.call(e, e => { e.onclick = changePrismTheme }) }, 0)</script>
+              </div>
+              <div>
+                <div class="note-warning post-note copyright" style="margin-top:42px">
+                  <p><span style="font-weight:700">作者：</span><a href="about.html" rel="nofollow noopener noreferrer"
+                      target="_blank"> theme-kaze</a></p>
+                  <p><span style="font-weight:700">文章链接：</span><a href="" rel="nofollow noopener noreferrer"
+                      target="_blank"> https://demo.theme-kaze.top/highlight/</a></p>
+                  <p><span style="font-weight:700">版权声明：</span>本博客所有文章除特别声明外，均采用<a href="javascript:;" rel="noopener"
+                      target="_blank">CC BY-NC-SA 4.0 协议</a>。转载请注明出处！</p>
+                </div>
+              </div>
+            </article>
+            <div class="nav">
+              <div class="nav-item-prev"><a href="index8.html" class="nav-link"><i
+                    class="iconfont icon-left nav-prev-icon"></i>
+                  <div>
+                    <div class="nav-label">上一篇</div>
+                    <div class="nav-title">主题使用文档</div>
+                  </div>
+                </a></div>
+              <div class="nav-item-next"><a href="index10.html" class="nav-link">
+                  <div>
+                    <div class="nav-label">下一篇</div>
+                    <div class="nav-title">公式渲染</div>
+                  </div><i class="iconfont icon-right nav-next-icon"></i>
+                </a></div>
+            </div>
+            <div class="card card-content comment-card" style="margin-top:16px">
+              <div class="comment-card-title">评论</div>
+              <div id="vcomments"></div>
+              <script>loadScript("//unpkg.com/valine/dist/Valine.min.js"); var oldLoadVa = window.onload; window.onload = function () { oldLoadVa && oldLoadVa(), new Valine({ el: "#vcomments", appId: "KxoK4Ebe5ijWF46B3vEOweiw-MdYXbMMI", appKey: "CTkC6yslbM9aItMbEqdhJd3d", placeholder: "欢迎评论", path: window.location.pathname, avatar: "mp", meta: ["nick", "mail", "link"], pageSize: "10", lang: "", visitor: "false", highlight: !0, recordIP: !1, serverURLs: "https://kxok4ebe.api.lncldglobal.com", enableQQ: "false", requiredFields: [] }) }</script>
+            </div>
+            <div class="card card-content toc-card" id="mobiletoc">
+              <div class="toc-header"><i class="iconfont icon-menu" style="padding-right:2px"></i>目录</div>
+              <ol class="toc">
+                <li class="toc-item toc-level-2"><a href="#%E7%AE%80%E4%BB%8B" class="toc-link"><span
+                      class="toc-text">简介</span></a>
+                  <ol class="toc-child">
+                    <li class="toc-item toc-level-3"><a href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"
+                        class="toc-link"><span class="toc-text">高亮方案</span></a></li>
+                    <li class="toc-item toc-level-3"><a href="#%E4%BD%BF%E7%94%A8highlightjs" class="toc-link"><span
+                          class="toc-text">使用highlightjs</span></a></li>
+                  </ol>
+                </li>
+                <li class="toc-item toc-level-2"><a href="#%E4%BD%BF%E7%94%A8prismjs" class="toc-link"><span
+                      class="toc-text">使用prismjs</span></a></li>
+                <li class="toc-item toc-level-2"><a href="#%E6%BC%94%E7%A4%BA" class="toc-link"><span
+                      class="toc-text">演示</span></a>
+                  <ol class="toc-child">
+                    <li class="toc-item toc-level-3"><a href="#javascript" class="toc-link"><span
+                          class="toc-text">Javascript</span></a></li>
+                    <li class="toc-item toc-level-3"><a href="#c" class="toc-link"><span class="toc-text">C++</span></a>
+                    </li>
+                    <li class="toc-item toc-level-3"><a href="#php" class="toc-link"><span
+                          class="toc-text">PHP</span></a></li>
+                    <li class="toc-item toc-level-3"><a href="#json" class="toc-link"><span
+                          class="toc-text">JSON</span></a></li>
+                    <li class="toc-item toc-level-3"><a href="#python" class="toc-link"><span
+                          class="toc-text">Python</span></a></li>
+                    <li class="toc-item toc-level-3"><a href="#go" class="toc-link"><span class="toc-text">Go</span></a>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+            </div>
+          </main>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+              <article class="card card-content toc-card">
+                <div class="toc-header"><i class="iconfont icon-menu" style="padding-right:2px"></i>目录</div>
+                <ol class="toc">
+                  <li class="toc-item toc-level-2"><a href="#%E7%AE%80%E4%BB%8B" class="toc-link"><span
+                        class="toc-text">简介</span></a>
+                    <ol class="toc-child">
+                      <li class="toc-item toc-level-3"><a href="#%E9%AB%98%E4%BA%AE%E6%96%B9%E6%A1%88"
+                          class="toc-link"><span class="toc-text">高亮方案</span></a></li>
+                      <li class="toc-item toc-level-3"><a href="#%E4%BD%BF%E7%94%A8highlightjs" class="toc-link"><span
+                            class="toc-text">使用highlightjs</span></a></li>
+                    </ol>
+                  </li>
+                  <li class="toc-item toc-level-2"><a href="#%E4%BD%BF%E7%94%A8prismjs" class="toc-link"><span
+                        class="toc-text">使用prismjs</span></a></li>
+                  <li class="toc-item toc-level-2"><a href="#%E6%BC%94%E7%A4%BA" class="toc-link"><span
+                        class="toc-text">演示</span></a>
+                    <ol class="toc-child">
+                      <li class="toc-item toc-level-3"><a href="#javascript" class="toc-link"><span
+                            class="toc-text">Javascript</span></a></li>
+                      <li class="toc-item toc-level-3"><a href="#c" class="toc-link"><span
+                            class="toc-text">C++</span></a></li>
+                      <li class="toc-item toc-level-3"><a href="#php" class="toc-link"><span
+                            class="toc-text">PHP</span></a></li>
+                      <li class="toc-item toc-level-3"><a href="#json" class="toc-link"><span
+                            class="toc-text">JSON</span></a></li>
+                      <li class="toc-item toc-level-3"><a href="#python" class="toc-link"><span
+                            class="toc-text">Python</span></a></li>
+                      <li class="toc-item toc-level-3"><a href="#go" class="toc-link"><span
+                            class="toc-text">Go</span></a></li>
+                    </ol>
+                  </li>
+                </ol>
+              </article>
+              <article class="card card-content">
+                <div class="recent-posts-card">
+                  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban"
+                      style="padding-right:2px"></i>最近文章</div>
+                  <div class="recent-posts-list">
+                    <div class="recent-posts-item">
+                      <div class="recent-posts-item-title">2020-08-03</div><a href="index8.html">
+                        <div class="recent-posts-item-content">主题使用文档</div>
+                      </a>
+                    </div>
+                    <div class="recent-posts-item">
+                      <div class="recent-posts-item-title">2020-08-03</div><a href="">
+                        <div class="recent-posts-item-content">代码高亮</div>
+                      </a>
+                    </div>
+                    <div class="recent-posts-item">
+                      <div class="recent-posts-item-title">2020-07-27</div><a href="index10.html">
+                        <div class="recent-posts-item-content">公式渲染</div>
+                      </a>
+                    </div>
+                    <div class="recent-posts-item">
+                      <div class="recent-posts-item-title">2020-07-27</div><a href="index11.html">
+                        <div class="recent-posts-item-content">荷塘月色</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <div class="footer-dsc"><span>Copyright © 2020 - 2022 </span>&nbsp; <a href="index.html"
+            class="footer-link">theme-kaze demo</a></div>
+      </div>
+      <div class="footer-dsc">Powered by <a href="javascript:;" class="footer-link" rel="nofollow noopener noreferrer"
+          target="_blank">&nbsp;Hexo </a><span>&nbsp;|&nbsp;</span> Theme - <a href="javascript:;" class="footer-link"
+          rel="nofollow noopener noreferrer" target="_blank">&nbsp;Kaze</a></div>
+      <div class="footer-dsc">本站总访问量<span id="busuanzi_value_site_pv"></span>次</div>
+    </div>
+  </footer><a class="basebutton" aria-label="回到顶部" id="scrollbutton" role="button"><i
+      class="iconfont button-icon icon-arrowleft"></i> </a><a class="basebutton" aria-label="menu button"
+    id="menubutton" role="button"><i class="iconfont button-icon icon-menu"></i> </a><a class="basebutton"
+    aria-label="控制中心" id="popbutton" role="button"><i class="iconfont button-icon icon-expand"></i> </a><a
+    class="basebutton darkwidget" aria-label="夜色模式" id="darkbutton" role="button"><i
+      class="iconfont button-icon icon-weather"></i> </a><a class="basebutton searchwidget" aria-label="搜索"
+    id="searchbutton" role="button"><i class="iconfont button-icon icon-search"></i></a>
+  <link href="static/css/katex.min.css" rel="stylesheet">
+  <script>var addImgLayout = function () { for (var t = document.querySelectorAll(".post-content img"), e = 0; e < t.length; e++) { var a = document.createElement("a"), l = (a.setAttribute("href", t[e].getAttribute("data-src")), a.setAttribute("aria-label", "illustration"), a.style.cssText = "width: 100%; display: flex; justify-content: center;", t[e].alt && (a.dataset.caption = t[e].alt), a.dataset.nolink = !0, t[e].before(a), a.append(t[e]), document.createElement("div")); l.classList.add("gallery"), a.before(l), l.append(a) } baguetteBox.run(".gallery") }</script>
+  <script>loadScript("/js/lib/lightbox/baguetteBox.min.js", addImgLayout)</script>
+  <script src="static/js/main.js"></script>
+  <script>loadScript("/js/lib/busuanzi.min.js")</script>
+  <script>var addLazyload = function () { lozad(".lozad", { load: function (a) { a.srcset = a.getAttribute("data-src") }, loaded: function (a) { a.classList.add("loaded") } }).observe() }</script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  <script src="static/js/5.1.js" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"
+    type="module"></script>
+  <script>setTimeout(() => { localSearch("search.json") }, 0)</script>
+</body>
+
+</html>
